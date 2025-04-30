@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Redirecting...</title>
+  <script>
+    const primaryURL = "https://mmm-tg0a.onrender.com/";
+    const backupURL = "https://mmm-4k9t.onrender.com/";
+
+    async function checkAndRedirect() {
+      try {
+        const res = await fetch(primaryURL + "/ping", { method: "GET", cache: "no-store" });
+        if (res.ok) {
+          window.location.href = primaryURL;
+        } else {
+          throw new Error("Primary down");
+        }
+      } catch (e) {
+        window.location.href = backupURL;
+      }
+    }
+
+    checkAndRedirect();
+  </script>
+</head>
+<body>
+  <h2>Redirecting to active server...</h2>
+</body>
+</html>
